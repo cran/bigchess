@@ -4,12 +4,16 @@
 \alias{plot_tree_move}
 \title{Plot tree for a given tree move table}
 \usage{
-plot_tree_move(tr, main = "")
+plot_tree_move(tr, main = "", add.lines = T, add.labels = T)
 }
 \arguments{
 \item{tr}{data frame containg tree move}
 
 \item{main}{string for main title, default is ""}
+
+\item{add.lines}{boolean (default TRUE) add weighted mean lines?}
+
+\item{add.labels}{boolean (default TRUE) add labels?}
 }
 \value{
 Barplot with white scores, draws percent and black scores.

@@ -25,7 +25,7 @@ browse_opening <- function(df,movetext = ""){
   }
   else{
   no <- n_moves(opening)
-  emo <- data.frame(extract_moves(opening,no),stringsAsFactors = T)
+  emo <- data.frame(extract_moves(opening,no,F),stringsAsFactors = T)
   ncemo <- ncol(emo)-1
   if(is.na(emo[,ncemo]))
   {

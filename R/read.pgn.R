@@ -12,6 +12,7 @@ utils::globalVariables(c("Result"))
 #' Most popular: "WhiteElo", "BlackElo","ECO","SetUp" or "FEN". Case sensitive.
 #' @param n.moves boolean (default TRUE), compute number of moves?
 #' @param extract.moves integer (default 10) passed to extract_moves function. Additionaly value -1 will extract all moves from movetext (not recommended for big files). Value 0 means that moves will not be extracted.
+#' @param last.move boolean (default TRUE) passed to extract_moves, ignored when extract.moves = 0
 #' @param stat.moves boolean (default TRUE), compute moves count statistics? Could take a long time for big file.
 #' @param big.mode boolean (default FALSE) used in read.pgn.ff function
 #' @param quiet boolean (default FALSE), indicating if messages should appear.
@@ -48,7 +49,7 @@ utils::globalVariables(c("Result"))
 #'result <- rbind(result,read.pgn(paste0(i,"/pgn")))}
 #' @importFrom utils head tail
 #' @export
-read.pgn <- function(con,add.tags = NULL,n.moves = T, extract.moves = 10,stat.moves = T,big.mode = F,quiet = F,ignore.other.games = F){
+read.pgn <- function(con,add.tags = NULL,n.moves = T, extract.moves = 10,last.move = T,stat.moves = T,big.mode = F,quiet = F,ignore.other.games = F){
   st <- Sys.time()
   tags <- c(c("Event","Site","Date","Round","White","Black","Result"),add.tags)
   if(big.mode) al = con
@@ -92,7 +93,7 @@ read.pgn <- function(con,add.tags = NULL,n.moves = T, extract.moves = 10,stat.mo
   if(extract.moves){
     if(extract.moves==-1) {N <- max(r$NMoves)}
     else {N <- extract.moves}
-    r <- cbind(r,extract_moves(r$Movetext,N))
+    r <- cbind(r,extract_moves(r$Movetext,N,last.move = last.move))
     if(!quiet) message(paste0(Sys.time(),", extract moves done")) }
   if(stat.moves) {
     r <- cbind(r,stat_moves(r$Movetext))

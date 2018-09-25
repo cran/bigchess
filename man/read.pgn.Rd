@@ -5,7 +5,8 @@
 \title{Reads PGN files into data frame}
 \usage{
 read.pgn(con, add.tags = NULL, n.moves = T, extract.moves = 10,
-  stat.moves = T, big.mode = F, quiet = F, ignore.other.games = F)
+  last.move = T, stat.moves = T, big.mode = F, quiet = F,
+  ignore.other.games = F)
 }
 \arguments{
 \item{con}{connection argument passed directly to readLines() function. String - the name of the file which the data are to be read from or connection object or URL.}
@@ -20,6 +21,8 @@ Most popular: "WhiteElo", "BlackElo","ECO","SetUp" or "FEN". Case sensitive.}
 \item{n.moves}{boolean (default TRUE), compute number of moves?}
 
 \item{extract.moves}{integer (default 10) passed to extract_moves function. Additionaly value -1 will extract all moves from movetext (not recommended for big files). Value 0 means that moves will not be extracted.}
+
+\item{last.move}{boolean (default TRUE) passed to extract_moves, ignored when extract.moves = 0}
 
 \item{stat.moves}{boolean (default TRUE), compute moves count statistics? Could take a long time for big file.}
 
