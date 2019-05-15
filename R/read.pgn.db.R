@@ -1,21 +1,21 @@
-#' Reads PGN files into ff data frame
+#' Reads PGN files into database table
 #'
-#' Reads PGN files into ff data frame
+#' Reads PGN files into database table
 #'
 #' @param con connection argument passed directly to readLines() function. String - the name of the file which the data are to be read from or connection object or URL.
 #' @param batch.size number of lines to read in one batch, default is 10^6.
-#' @param ignore.other.games boolean (default FALSE) if TRUE result is subset of original dataset without games with result marked as "*", i.e. ongoing games. The only one argument which is not passed directly to read.pgn function.
+#' @param conn connection argument created by dbConnect
+#' @param table.name string (default "pgn"), table name, used in dbWriteTable(conn, table.name, read.pgn(batch))
 #' @param ... further arguments passed directly to read.pgn() function (besides ignore.other.games and big.mode)
-#' @return ff data frame like from read.pgn() function. Since character values are not supported in ffdf object, "Movetext" column is ommited.
 #'
 #' @examples
-#' require(ff)
-#' require(ffbase)
 #' f <- system.file("extdata", "Carlsen.gz", package = "bigchess")
 #' con <- gzfile(f,"rbt",encoding = "latin1")
-#' # options("fftempdir"="/path/"...) # if necessarily
-#' fdf <- read.pgn.ff(con,stat.moves = FALSE)
-#' delete(fdf)
+#' require(RSQLite)
+#' conn <- dbConnect(SQLite())
+#' read.pgn.db(con,stat.moves = FALSE,conn = conn)
+#' dbGetQuery(conn, "SELECT COUNT(*) FROM pgn") #2410
+#' dbDisconnect(conn)
 #' # Works with all types of connections (also gz or zip files).
 #' # con argument is passed directly to readLines(con,batch.size)
 #' # so (if total number of lines to read is greater then batch.size)
@@ -24,40 +24,35 @@
 #' # Windows ('rb' opening mode for loop over readLines):
 #' con <- gzfile(system.file("extdata", "Carlsen.gz", package = "bigchess"),"rb",encoding = "latin1")
 #' # con <- file("path_to_big_chess_file.pgn","rb",encoding = "latin1")
-#' fdf <- read.pgn.ff(con)
-#' delete(fdf)}
+#' read.pgn.db(con,conn = conn)
+#' }
 #'\donttest{
 #' # Linux/Mac OS X ('r' opening mode for loop over readLines):
 #' con <- gzfile(system.file("extdata", "Carlsen.gz", package = "bigchess"),"r",encoding = "latin1")
 #' # con <- file("path_to_big_chess_file.pgn","r",encoding = "latin1")
-#' fdf <- read.pgn.ff(con)
-#' delete(fdf)}
+#' read.pgn.db(con,conn = conn)
+#' }
 #' \donttest{
 #' # Windows (example of zipped file handling)
 #' unzf <- unzip("zipped_pgn_file.zip")
-#' fdf <- read.pgn.ff(file(unzf,"rb"))
-#' delete(fdf)
+#' read.pgn.db(con,conn = conn)
 #' }
-#' @import ff
-#' @importFrom ffbase ffdfappend
+#' @import RSQLite
 #' @export
-read.pgn.ff <- function(con,batch.size = 10^6,ignore.other.games = F,...){
+read.pgn.db <- function(con,batch.size = 10^6,conn,table.name = "pgn",...){
   rl <- readLines(con,batch.size)
   lrl <- length(rl)
   n<-0
+  first <- T #indicating first batch
   while(lrl>0){
-    if(exists("res")) {
-      wrp <- read.pgn(rl,big.mode = T,ignore.other.games = F,...)[sel_cols]
-      for(i in sel_cols) if(is.character(wrp[,i]))
-        wrp[,i] <- factor(wrp[,i])
-      res <- ffdfappend(res,as.ffdf(wrp[,sel_cols]))
+    if(!first) {
+      wrp <- read.pgn(rl,big.mode = T,ignore.other.games = F,...)
+      dbWriteTable(conn,table.name,wrp,append = T)
     }
     else {
       wrp <- read.pgn(rl,big.mode = T,ignore.other.games = F,...)
-      sel_cols <- setdiff(colnames(wrp),"Movetext")
-      for(i in sel_cols) if(is.character(wrp[,i])) wrp[,i] <- factor(wrp[,i])
-
-        res <- ff::as.ffdf(data.frame(wrp[,sel_cols]))
+      dbWriteTable(conn,table.name,wrp)
+      first <- F
     }
     x <- grepl("^\\[Event ",rl,perl = T)
     mwx <- max(which(x))
@@ -74,8 +69,5 @@ read.pgn.ff <- function(con,batch.size = 10^6,ignore.other.games = F,...){
   }
 
   close(con)
-  message(paste0(Sys.time(),", end of file: ",nrow(res)," games imported successfully"))
-  if(ignore.other.games) res <- subset(res,Result !="*")
-  res <- droplevels(res)
-  return(res)
+  message(paste0(Sys.time(),", end of file: ",dbGetQuery(conn, "SELECT COUNT(*) FROM pgn")," games imported successfully"))
 }
