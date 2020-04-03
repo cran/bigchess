@@ -1,11 +1,11 @@
-0b9f8636f9c5613606281cd5921c809e *DESCRIPTION
+f81bc055ed6c9ed887851eef632cddce *DESCRIPTION
 18c77493cb3db636784d9e772435537d *NAMESPACE
 7150d17680c5cc6cbf89048abd8fb419 *R/FirstTwoMoves.R
 e96a99b42983199e84996b334b961c56 *R/analyze_position.R
 8930e79fa03dc5d11c25f7a95afd1ee9 *R/browse_eco_opening.R
 0ded9816a67021153689d4f424a95659 *R/browse_opening.R
 1974d37922e1f2d5ee22901a3b82a5b3 *R/eco.R
-56fc9e217edaf2b243fe576e68142b7c *R/extract_moves.R
+3160cbf7d8b6721e729fa41344d1b6c9 *R/extract_moves.R
 59f083d8609e8d7d030c85feb63ba699 *R/lan2san.R
 abd5c6f1fc1deacafc6718658bd00ff2 *R/misc.R
 35f527e6b6cfacef1053b7fbe0fe6d38 *R/n_moves.R
