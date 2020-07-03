@@ -1,7 +1,8 @@
-f81bc055ed6c9ed887851eef632cddce *DESCRIPTION
-18c77493cb3db636784d9e772435537d *NAMESPACE
+b6fe65e71a0438b2822515a02ce1c9b0 *DESCRIPTION
+61ccea5de7fc2f77cfc3ef1ef30e2ce2 *NAMESPACE
 7150d17680c5cc6cbf89048abd8fb419 *R/FirstTwoMoves.R
-e96a99b42983199e84996b334b961c56 *R/analyze_position.R
+bff8a2305fea4116113a851cc300b254 *R/analyze_game.R
+5ce77ffcc1607b786a6a2d31858871bf *R/analyze_position.R
 8930e79fa03dc5d11c25f7a95afd1ee9 *R/browse_eco_opening.R
 0ded9816a67021153689d4f424a95659 *R/browse_opening.R
 1974d37922e1f2d5ee22901a3b82a5b3 *R/eco.R
@@ -13,8 +14,8 @@ abd5c6f1fc1deacafc6718658bd00ff2 *R/misc.R
 27ee6d2b6f96a67d8dc0dec210ca1f6d *R/plot_tree_eco.R
 0d72667cce5bae5940fa02da7813cf31 *R/plot_tree_move.R
 5e60f69aa58b85319e3579a8d66c4c8e *R/read.pgn.R
-0db4966da8775704045fd13aa6e20f46 *R/read.pgn.db.R
-6432eb167ea27a41fa134cd25f43fe89 *R/read.pgn.ff.R
+3a0ff767cd2afcf125af60f8ffe76c7a *R/read.pgn.db.R
+9a99fd85c527bdb08f68e24c616f4340 *R/read.pgn.ff.R
 81aa53bec74f5f7e79d65b608acf51d9 *R/san2lan.R
 7b84c9d747dfe45f2600a69d7a8eb0d5 *R/stat_moves.R
 597cec988b30edd3f96afd77b0b0b2e8 *R/tree_eco.R
@@ -34,6 +35,7 @@ f286d19e674e08c5318c6cf7d3d89763 *R/uci_setoption.R
 fa21efad7409ea404b7b30418e7fc618 *R/uci_stop.R
 e0449e47f95a9dc50ee8bf55dedff1c6 *R/uci_uci.R
 e664ea9b80149d5feb3fb401697c20f1 *R/uci_ucinewgame.R
+09ec6f80f75b29d22f7cd08b7619e0f1 *R/write.pgn.R
 736919ce30455d007e0733b12248de08 *README.md
 c69845e09637ab0b4810d0ab8ed48ab6 *data/FirstTwoMoves.RData
 ac14bdb2fce5b8aefadb08c156915988 *data/eco.RData
@@ -41,7 +43,8 @@ ac14bdb2fce5b8aefadb08c156915988 *data/eco.RData
 951245d1f86fe94ef4cf4ff674faaa82 *inst/extdata/Carlsen.gz
 e302afbf9f20b0270c1ddfe9df517358 *inst/extdata/Kasparov.gz
 3ae4bc87338a98df77ae1c07b63679b1 *man/FirstTwoMoves.Rd
-01eb201f4fedaa4118ec0e717ee70d54 *man/analyze_position.Rd
+b16e3e7e3cae6a7f773029b1ca9b0b1a *man/analyze_game.Rd
+377d766628d64e13c2e3751a4ca927da *man/analyze_position.Rd
 dfaa74c7849e359e54cc20ae97f6bb84 *man/browse_eco_opening.Rd
 dd5ef4b796403ff1c84b2eccd0ad83a2 *man/browse_opening.Rd
 d0945ff00eaa18e613621fa6e7f3734f *man/eco.Rd
@@ -52,8 +55,8 @@ a18c4849a2a9795ff1a111d3c6b9d0b5 *man/player_profile.Rd
 2acb7119205b36e9b6d7d72f5b0c7242 *man/plot_tree_eco.Rd
 29d0372eb42caaeef1d67cd9ed5fdc30 *man/plot_tree_move.Rd
 9b04633bce6421941321ad44a4db6be9 *man/read.pgn.Rd
-ef367e019fdc237229318bbfab57b258 *man/read.pgn.db.Rd
-d7ea3fd2b2293c00eb401851558df684 *man/read.pgn.ff.Rd
+0ed53740a2107d74b6930c4d732a7d60 *man/read.pgn.db.Rd
+d9dcacfdd18951cd2bebd8672d570cba *man/read.pgn.ff.Rd
 1caea0de8e173a9d07871cdf1b1ff86e *man/san2lan.Rd
 d336c4ea36c3cf03dd400f18b5d0ea4e *man/stat_moves.Rd
 9961f9fb623e99a3b8e93b14bce374fb *man/tree_eco.Rd
@@ -73,3 +76,4 @@ c0f591b6c65a73e6ddace5109a6bb213 *man/uci_register.Rd
 2142d771ffa6d4cd081d65ef2f1a492d *man/uci_stop.Rd
 c34ae96331dddc02afbbb5a6d0b6f3f5 *man/uci_uci.Rd
 d466e5d6a7248865515141de175b54ac *man/uci_ucinewgame.Rd
+efaf1b91faf3b81973e3b11a40164f94 *man/write.pgn.Rd
