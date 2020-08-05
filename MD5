@@ -1,5 +1,5 @@
-b6fe65e71a0438b2822515a02ce1c9b0 *DESCRIPTION
-61ccea5de7fc2f77cfc3ef1ef30e2ce2 *NAMESPACE
+16deda3a3a33fd243c1a34cc0515fecd *DESCRIPTION
+2e6c42050b606e90a67559f2ae78731a *NAMESPACE
 7150d17680c5cc6cbf89048abd8fb419 *R/FirstTwoMoves.R
 bff8a2305fea4116113a851cc300b254 *R/analyze_game.R
 5ce77ffcc1607b786a6a2d31858871bf *R/analyze_position.R
@@ -35,7 +35,7 @@ f286d19e674e08c5318c6cf7d3d89763 *R/uci_setoption.R
 fa21efad7409ea404b7b30418e7fc618 *R/uci_stop.R
 e0449e47f95a9dc50ee8bf55dedff1c6 *R/uci_uci.R
 e664ea9b80149d5feb3fb401697c20f1 *R/uci_ucinewgame.R
-09ec6f80f75b29d22f7cd08b7619e0f1 *R/write.pgn.R
+8697344d5bd7818034449d340c2f0e56 *R/write.pgn.R
 736919ce30455d007e0733b12248de08 *README.md
 c69845e09637ab0b4810d0ab8ed48ab6 *data/FirstTwoMoves.RData
 ac14bdb2fce5b8aefadb08c156915988 *data/eco.RData
@@ -76,4 +76,4 @@ c0f591b6c65a73e6ddace5109a6bb213 *man/uci_register.Rd
 2142d771ffa6d4cd081d65ef2f1a492d *man/uci_stop.Rd
 c34ae96331dddc02afbbb5a6d0b6f3f5 *man/uci_uci.Rd
 d466e5d6a7248865515141de175b54ac *man/uci_ucinewgame.Rd
-efaf1b91faf3b81973e3b11a40164f94 *man/write.pgn.Rd
+f045ffc1013470c84603af01e86269d8 *man/write.pgn.Rd
